@@ -1,9 +1,11 @@
+
 {% load static %}
 {% static "images" as baseUrl %}
+
 <!DOCTYPE html>
 <html lang="en">
-<head>
-	<title>Login V17</title>
+  <head>
+<title>Login V17</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 <!--===============================================================================================-->
@@ -28,9 +30,8 @@
 	<link rel="stylesheet" type="text/css" href="{% static 'css/util_login.css' %}">
 	<link rel="stylesheet" type="text/css" href="{% static 'css/main_login.css' %}">
 <!--===============================================================================================-->
-</head>
-<body>
-
+  </head>
+  <body>
 
 	<form action="login" method="post">
         {% csrf_token %}
@@ -61,7 +62,7 @@
 						<button class="login100-form-btn">
 							Sign in
 						</button>
-
+                    </div>
 
 				</form>
 
@@ -72,7 +73,8 @@
 
     </form>
 
-	<div id="dropDownSelect1"></div>
+  <!-- loader -->
+  	<div id="dropDownSelect1"></div>
 
 <!--===============================================================================================-->
 	<script src="{% static 'vendor/jquery/jquery-3.2.1.min.js' %}"></script>
@@ -97,5 +99,5 @@
 <!--===============================================================================================-->
 	<script src="js/main_login.js' %}"></script>
 
-</body>
+  </body>
 </html>

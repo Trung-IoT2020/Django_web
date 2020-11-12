@@ -4,10 +4,18 @@ from django.db import models
 
 class Destination(models.Model):
     id= models.IntegerField
-    name= models.CharField(max_length=100)
-    img= models.ImageField(upload_to='pics')
+    first_name= models.CharField(max_length=150)
+    img= models.ImageField(upload_to='pics/')
     desc= models.TextField()
     price= models.IntegerField()
+    sdt = models.IntegerField()
+
+    diachi = models.CharField(max_length=100)
+    quan = models.CharField(max_length=10)
     tieude= models.CharField(max_length=50)
-    ngaythang = models.DateTimeField(max_length=False)
-    luachon =models.BooleanField(default=False)
+    ngaythang = models.DateTimeField(auto_now_add=True)
+    luachon = models.BooleanField(default=0)
+
+
+    def __str__(self):
+        return self.tieude

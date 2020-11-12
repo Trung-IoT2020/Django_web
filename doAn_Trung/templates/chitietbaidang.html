@@ -1,0 +1,23 @@
+
+{% load static %}
+{% static "images" as baseUrl %}
+{% block content %}
+    <h3><a href="show_index/{{ post.id }}">{{ post.tieude }}</a></h3>
+    <br>
+     <div class="col-md-12">
+									<div class="blog-entry ftco-animate d-md-flex">
+                                        <div><a><img src="media/{{ post.img.url }}" width="250px" height="250px"></a></div>
+										<div class="text text-2 pl-md-4">
+				              <h3 class="nav-link"><a href="show_index/{{ post.id }}">{{ post.tieude }}</a></h3>
+                                <div class="meta-wrap"><p class="meta">
+                                <span><i class="icon-calendar mr-2"></i>June 28, 2019</span>
+                                <span><a href="#"><i class="icon-folder-o mr-2"></i>{{ post.first_name }}</a></span>
+                                <span>${{ post.price }}</span>
+
+			              	</div>
+				              <p class="mb-4">{{ dest.desc }}</p>
+				              <p><a href="/" class="btn-custom">COMBACK <span class="ion-ios-arrow-forward"></span></a></p>
+				            </div>
+									</div>
+								</div>
+{% endblock %}

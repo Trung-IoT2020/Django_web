@@ -1,0 +1,48 @@
+{% load static %}
+{% static "images" as baseUrl %}
+
+<div id="colorlib-page">
+		<a href="#" class="js-colorlib-nav-toggle colorlib-nav-toggle"><i></i></a>
+		<aside id="colorlib-aside" role="complementary" class="js-fullheight">
+            {% include 'menu.html' %}
+
+
+		</aside> <!-- END COLORLIB-ASIDE -->
+		<div id="colorlib-main">
+			<section class="ftco-section ftco-no-pt ftco-no-pb">
+	    	<div class="container">
+	    		<div class="row d-flex">
+	    			<div class="col-xl-8 py-5 px-md-5">
+	    				<div class="row pt-md-4">
+                            {% for dest in dest_tong %}
+                                 <!--Phan Destination-->
+                            <div class="col-md-12">
+									<div class="blog-entry ftco-animate d-md-flex">
+										<a href="#" class="img img-2" style="background-image: url('{{ dest.img.url }}');"></a>
+										<div class="text text-2 pl-md-4">
+				              <h3 class="nav-link"><a href="show_index/{{ dest.id }}">{{ dest.tieude }}</a></h3>
+				              <div class="meta-wrap"><p class="meta">
+				              		<span><i class="icon-calendar mr-2"></i>June 28, 2019</span>
+				              		<span><a href="show_index/{{ dest.id }}><i class="icon-folder-o mr-2"></i>{{ dest.first_name }}</a></span>
+				              						              		<span>${{ dest.price }}</span>
+
+				              	</p>
+			              	</div>
+				              <p class="mb-4">{{ dest.desc }}</p>
+				              <p><a href="show_index/{{ dest.id }}" class="btn-custom">Read More <span class="ion-ios-arrow-forward"></span></a></p>
+				            </div>
+									</div>
+								</div>
+                            {% endfor %}
+
+			    		</div><!-- END-->
+                        {% include 'nut_chuyentrang.html' %}
+
+			    	</div>
+                        {% include "ben_Trai.html" %}
+	    		</div>
+
+	    	</div>
+	    </section>
+		</div><!-- END COLORLIB-MAIN -->
+	</div><!-- END COLORLIB-PAGE -->

@@ -1,0 +1,23 @@
+{% load static %}
+{% static "images" as baseUrl %}
+ <div class="row">
+			          <div class="col">
+			            <div class="block-27">
+
+                        <ul>
+                            <li><a href="?page={{ dest }}">&lt;<</a></li>
+			                <li><a href="?page={{ dest.previous_page_number }}">&lt;</a></li>
+			                <li class="active"><span>1</span></li>
+			                <li><a href="?page=2">2</a></li>
+			                <li><a href="?page=3">3</a></li>
+			                <li><a href="?page=4">4</a></li>
+			                <li><a href="?page={{ dest.previous_next_number }}"> ></a></li>
+			                <li><a href="?page={{ dest.paginator.num_pages }}">&gt;></a></li>
+
+			              </ul>
+
+			            </div>
+
+			          </div>
+
+                    </div>

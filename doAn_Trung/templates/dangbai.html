@@ -1,0 +1,48 @@
+{% load static %}
+{% static "images" as baseUrl %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dang Bai</title>
+{% include 'header.html' %}
+</head>
+<body>
+<aside id="colorlib-aside" role="complementary" class="js-fullheight">
+{% include "menu.html" %}
+</aside> <!-- END COLORLIB-ASIDE -->
+		<div id="colorlib-main">
+			<section class="ftco-section ftco-no-pt ftco-no-pb">
+	    	<div class="container ">
+	    		<div class="row d-flex">
+	    			<div class="col-xl-8 py-5 px-md-5">
+	    				<div class="row pt-md-4">
+                            <form action="dangbai" method="post" enctype="multipart/form-data">
+                                {% csrf_token %}
+                                <table class="table table-dark">
+                                    <h3>THÔNG TIN ĐĂNG BÀI</h3>
+                                    <thead>
+                                     <tr>
+                                <li><input type="text" name="first_name" placeholder="name" width="200"></li>
+                               <li> <input type="file" name="img" placeholder="img"></li>
+                               <li> <textarea name="desc" placeholder="desc"></textarea></li>
+                               <li> <input type="text" name="price" placeholder="price"></li>
+                               <li> <input type="text" name="tieude" placeholder="tieude"></li>
+                                <li><input type="text" name="sdt" placeholder="sđt"></li>
+                                <li><input type="text" name="diachi" placeholder="địa chỉ nhà"></li>
+                               <li><input type="text" name="quan" placeholder="quận đang ở"></li>
+
+                               <li><input type="submit"></li>
+                                     </tr>
+                                    </thead>
+                                </table>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </section>
+
+</div>
+</body>
+</html>
