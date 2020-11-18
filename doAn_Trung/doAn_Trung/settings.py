@@ -33,13 +33,14 @@ ALLOWED_HOSTS = ['dhtl.herokuapp.com', 'localhost', '127.0.0.1', '*']
 # Application definition
 
 INSTALLED_APPS = [
-    'home','show_index.apps.ShowIndexConfig','accounts',
+    'home.apps.HomeIndexConfig','accounts',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
 ]
 
 MIDDLEWARE = [
@@ -80,11 +81,11 @@ WSGI_APPLICATION = 'doAn_Trung.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',# Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'
-        'NAME': 'qlphongtro',                      # Or path to database file if using sqlite3.
+        'NAME': 'dbnhatro',                      # Or path to database file if using sqlite3.
         'USER': 'root',                      # Not used with sqlite3.
         'PASSWORD': '',                  # Not used with sqlite3.
         'HOST': 'localhost',                      # Set to empty string for localhost. Not used with sqlite3.
-        'PORT': '3306',                      # Set to empty string for default. Not used with sqlite3.
+        'PORT': '3308',                      # Set to empty string for default. Not used with sqlite3.
     }
 
 }

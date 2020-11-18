@@ -17,15 +17,15 @@
 	    		<div class="row d-flex">
 	    			<div class="col-xl-8 py-5 px-md-5">
 	    				<div class="row pt-md-4">
-                            <form action="dangbai" method="post" enctype="multipart/form-data">
+                            <form action="dangbai_nguoitimtro" method="post" enctype="multipart/form-data">
                                 {% csrf_token %}
                                 <table class="table table-dark">
-                                    <h3>THÔNG TIN ĐĂNG BÀI</h3>
+                                    <h3>THÔNG TIN ĐĂNG BÀI NGƯỜI TÌM TRỌ</h3>
                                     <thead>
                                      <tr>
-                                         <li>Quận <input type="text" name="quan" placeholder="quận đang ở"></li>
-                                         <li>Thành Phố <input type="text" name="tp" placeholder="thành phố"></li>
-                                         <li><input type="checkbox" name="chutro" placeholder="chutro">Chọn Chủ trọ</li>
+                                         <li>tiêu đề <input type="text" name="tieude" placeholder="tieude"></li>
+                                         <li>nội dung <textarea name="noidung" placeholder="noidung"></textarea></li>
+                                         <li>SDT <input type="text" name="sdt" placeholder="sdt"></li>
                                          <li><input type="submit"></li>
                                      </tr>
                                     </thead>
