@@ -5,4 +5,5 @@ from .models import dangbaichinh,dangbaichutro,dangbainguoitimtro
 
 admin.site.register(dangbaichinh),
 admin.site.register(dangbaichutro),
-admin.site.register(dangbainguoitimtro)
+admin.site.register(dangbainguoitimtro),
+

@@ -19,15 +19,18 @@
 	    				<div class="row pt-md-4">
                             <form action="dangbai" method="post" enctype="multipart/form-data">
                                 {% csrf_token %}
-                                <table class="table table-dark">
+                                <table class="table table-dark" border="2">
                                     <h3>THÔNG TIN ĐĂNG BÀI</h3>
                                     <thead>
+
+
                                      <tr>
-                                         <li>Quận <input type="text" name="quan" placeholder="quận đang ở"></li>
-                                         <li>Thành Phố <input type="text" name="tp" placeholder="thành phố"></li>
-                                         <li><input type="checkbox" name="chutro" placeholder="chutro">Chọn Chủ trọ</li>
-                                         <li><input type="submit"></li>
+                                         <td><input type="checkbox" name="chutro" placeholder="chutro">Chọn Chủ trọ</td>
                                      </tr>
+                                     <tr>
+                                         <td><input type="submit"></td>
+                                    </tr>
+
                                     </thead>
                                 </table>
                             </form>

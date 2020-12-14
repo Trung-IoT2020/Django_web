@@ -1,6 +1,9 @@
+from django.utils.timezone import now
+import datetime
 from django.db import models
-# Create your models here.
+from django.contrib.auth.models import User
 
+# Create your models here.
 class dangbaichutro(models.Model):
     id_ct = models.IntegerField
     ten = models.CharField(max_length=150)
@@ -10,26 +13,39 @@ class dangbaichutro(models.Model):
     noidung = models.TextField()
     gia = models.IntegerField()
     sdt = models.IntegerField()
-    ngaythang = models.DateTimeField(auto_now_add=True,auto_now=False)
+    quan= models.IntegerField()
+    tp= models.IntegerField()
+    status=models.IntegerField()
+    ngaythang = models.DateTimeField(default=now, editable=False)
     def __str__(self):
         return self.tieude
+
+    def snipet(self):
+        return self.noidung[:50]+'...'
+
+
 class dangbainguoitimtro(models.Model):
     id_ntt = models.IntegerField
     ten = models.CharField(max_length=150)
     tieude = models.CharField(max_length=50)
     noidung = models.TextField(max_length=255)
     sdt = models.IntegerField()
-    ngaythang = models.DateTimeField(auto_now_add=True,auto_now=False)
+    quan= models.IntegerField()
+    tp= models.IntegerField()
+    status = models.IntegerField()
+    ngaythang = models.DateTimeField(default=now, editable=False)
     def __str__(self):
         return self.tieude
+
+
+
 class dangbaichinh(models.Model):
     id= models.IntegerField
     ten= models.CharField(max_length=150)
-    quan = models.CharField(max_length=10)
+    quan = models.CharField(max_length=11)
     tp = models.CharField(max_length=50)
     id_ct =dangbaichutro.id_ct(default=True)
     id_ntt =dangbainguoitimtro.id_ntt(default=True)
-
 
     def __str__(self):
         return self.ten

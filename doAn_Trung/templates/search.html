@@ -1,0 +1,87 @@
+
+{% load static %}
+{% static "images" as baseUrl %}
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style>
+    body
+    {
+        display: flex;
+        justify-content: center;
+    }
+    .wrap
+    {
+        display: flex;
+        justify-content: center;
+        border-top-width: 50px;
+        width:1000px;
+    }
+    </style>
+    <title>Chi tiết đăng bài</title>
+{% include 'header.html' %}
+</head>
+
+<body>
+<div class="wrap">
+{% block content %}
+
+<div id="colorlib-page">
+		<a href="#" class="js-colorlib-nav-toggle colorlib-nav-toggle"><i></i></a>
+		<aside id="colorlib-aside" role="complementary" class="js-fullheight">
+            {% include 'menu.html' %}
+
+
+		</aside> <!-- END COLORLIB-ASIDE -->
+		<div id="colorlib-main">
+			<section class="ftco-section ftco-no-pt ftco-no-pb">
+	    	<div class="container">
+	    		<div class="row d-flex">
+
+	    			<div class="col-xl-8 py-5 px-md-5">
+                        <h2>Trang tìm kiếm</h2>
+
+	    				<div class="row pt-md-4">
+                            {% for ab in allPosts %}
+                                 <!--Phan Destination-->
+                            <div class="col-md-12">
+									<div class="blog-entry ftco-animate d-md-flex">
+										<a href="#" class="img img-2" style="background-image: url('{{ ab.img.url }}');"></a>
+										<div class="text text-2 pl-md-4">
+				              <h3 class="nav-link"><a href="home/{{ ab.id }}">{{ ab.tieude }}</a></h3>
+				              <div class="meta-wrap">
+								  <p class="meta">
+				              		<span><i class="icon-calendar mr-2"></i>{{ ab.ngaythang }}</span>
+                                  <span><i class="icon-calendar mr-2"></i>{{ ab.id }}</span>
+				              		<span><a href="home/{{ ab.id }}><i class="icon-folder-o mr-2"></i>{{ ab.ten }}</a></span>
+				              						              		<span>${{ ab.gia }}</span>
+
+				              	</p>
+			              	</div>
+				              <p class="mb-4">{{ ab.noidung }}</p>
+				              <p><a href="home/{{ ab.id }}" class="btn-custom">Read More <span class="ion-ios-arrow-forward"></span></a></p>
+				            </div>
+									</div>
+								</div>
+                            {% endfor %}
+
+			    		</div><!-- END-->
+                        {% include 'nut_chuyentrang.html' %}
+
+			    	</div>
+                        {% include "ben_Trai.html" %}
+	    		</div>
+
+	    	</div>
+	    </section>
+		</div><!-- END COLORLIB-MAIN -->
+	</div><!-- END COLORLIB-PAGE -->
+	{% endblock %}
+</div>
+</body>
+</html>

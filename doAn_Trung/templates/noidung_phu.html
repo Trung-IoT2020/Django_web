@@ -12,27 +12,23 @@
 			<section class="ftco-section ftco-no-pt ftco-no-pb">
 	    	<div class="container">
 	    		<div class="row d-flex">
-
 	    			<div class="col-xl-8 py-5 px-md-5">
-						<h2>Trang chủ</h2>
 	    				<div class="row pt-md-4">
-                            {% for dest in dest_tong %}
+                            {% for dest in dest_phu %}
                                  <!--Phan Destination-->
                             <div class="col-md-12">
 									<div class="blog-entry ftco-animate d-md-flex">
-										<a href="#" class="img img-2" style="background-image: url('{{ dest.img.url }}');"></a>
 										<div class="text text-2 pl-md-4">
-				              <h3 class="nav-link"><a href="home/{{ dest.id }}">{{ dest.tieude }}</a></h3>
+				              <h3 class="nav-link"><a href="/home/index_ntt/{{ dest.id }}">{{ dest.tieude }}</a></h3>
 				              <div class="meta-wrap"><p class="meta">
-				              		<span><i class="icon-calendar mr-2"></i>{{ dest.ngaythang }}</span>
-                                  <span><i class="icon-calendar mr-2"></i>{{ dest.id }}</span>
-				              		<span><a href="home/{{ dest.id }}><i class="icon-folder-o mr-2"></i>{{ dest.ten }}</a></span>
-				              						              		<span>${{ dest.gia }}</span>
+				              		<span><i class="icon-calendar mr-2"></i>June 28, 2019</span>
+				              		<span><a href="/home/index_ntt/{{ dest.id }}><i class="icon-folder-o mr-2"></i>{{ dest.ten }}</a></span>
+
 
 				              	</p>
 			              	</div>
-				              <p class="mb-4">{{ dest.noidung }}</p>
-				              <p><a href="home/{{ dest.id }}" class="btn-custom">Read More <span class="ion-ios-arrow-forward"></span></a></p>
+				              <p class="mb-4">{{ dest.desc }}</p>
+				              <p><a href="/home/index_ntt/{{ dest.id }}" class="btn-custom">Read More <span class="ion-ios-arrow-forward"></span></a></p>
 				            </div>
 									</div>
 								</div>

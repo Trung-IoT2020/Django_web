@@ -19,14 +19,62 @@
 	    				<div class="row pt-md-4">
                             <form action="dangbai_nguoitimtro" method="post" enctype="multipart/form-data">
                                 {% csrf_token %}
-                                <table class="table table-dark">
+                                <table class="table table-dark"border="2">
                                     <h3>THÔNG TIN ĐĂNG BÀI NGƯỜI TÌM TRỌ</h3>
                                     <thead>
                                      <tr>
-                                         <li>tiêu đề <input type="text" name="tieude" placeholder="tieude"></li>
-                                         <li>nội dung <textarea name="noidung" placeholder="noidung"></textarea></li>
-                                         <li>SDT <input type="text" name="sdt" placeholder="sdt"></li>
-                                         <li><input type="submit"></li>
+                                         <td>tiêu đề </td><td> <input type="text" name="tieude" placeholder="tieude"></td>
+                                     </tr>
+                                          <tr>
+                                         <td>nội dung </td><td><textarea name="noidung" placeholder="noidung"></textarea></td>
+                                          </tr>
+                                          <tr>
+                                         <td>SDT</td><td> <input type="text" name="sdt" placeholder="sdt" minlength="10" minlength="11" required>></td>
+                                      </tr>
+                                         <tr>
+                                         <td>Quận</td>
+                                         <td>
+                                         <select name="quan">
+                                             <option value=”″>Chọn Quận bạn muốn</option>
+                                             <option  value=1>Quận 1</option>
+                                             <option  value=2>Quận 2</option>
+                                             <option  value=3>Quận 3</option>
+                                             <option  value=4>Quận 4</option>
+                                             <option  value=5>Quận 5</option>
+                                             <option  value=6>Quận 6</option>
+                                             <option   value=7>Quận 7</option>
+                                             <option  value=8>Quận 8</option>
+                                             <option  value=9>Quận 9</option>
+                                             <option value=10>Quận 10</option>
+                                             <option value=11>Quận 11</option>
+                                             <option value=12>Quận 12</option>
+                                             <option value=13>Quận Bình Tân</option>
+                                             <option value=14>Quận Tân Bình</option>
+                                             <option value=15>Quận Gò Vấp</option>
+                                             <option value=16>Quận Bình Thạnh</option>
+                                             <option value=17>Quận Nhà Bè</option>
+                                             <option value=18>Quận Bình Chánh</option>
+                                         </select>
+
+                                        </td>
+                                         </tr>
+
+                                     <tr>
+                                         <td>Thành Phố </td>
+                                         <td>
+                                          <select name="tp">
+                                             <option value=”″>Chọn Thành Phố bạn muốn</option>
+                                             <option value=1>Hồ Chí Minh</option>
+                                             <option value=2>Hà Nội</option>
+                                          </select>
+                                         </td>
+                                     </tr>
+                                     <tr>
+                                           <td><input type="radio" id="1" name="status" value="1">   </td>
+                                          <td><label for="1">Chọn để chấp nhận đăng bài </label></td>
+                                     </tr>
+                                      <tr>
+                                         <td><input type="submit"></td>
                                      </tr>
                                     </thead>
                                 </table>

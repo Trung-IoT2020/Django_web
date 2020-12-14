@@ -4,15 +4,22 @@ from .models import dangbaichinh,dangbaichutro,dangbainguoitimtro
 from django.core.files.storage import FileSystemStorage
 from django.core.paginator import Paginator
 from django.http import HttpResponse
-from accounts.views import register
+from . import forms
 from django.contrib.auth.decorators import login_required
 # Create your views here.
+
 def index(request):
     dest_tong = dangbaichutro.objects.all()
     soluongbai = Paginator(dest_tong,4)
     page_so = request.GET.get('page')
     page_obj = soluongbai.get_page(page_so)
     return render(request, 'index.html',{'dest_tong':page_obj})
+def index_ntt(request):
+    dest_phu = dangbainguoitimtro.objects.all()
+    soluongbai = Paginator(dest_phu,4)
+    page_so = request.GET.get('page')
+    page_obj = soluongbai.get_page(page_so)
+    return render(request, 'index_ntt.html',{'dest_phu':page_obj})
 
 
 @login_required(login_url='/accounts/login')
@@ -20,13 +27,11 @@ def dangbai(request):
 
     if request.method =='POST':
              ten = request.user.username
-             quan = request.POST['quan']
-             tp = request.POST['tp']
              if request.POST.get('chutro'):
-                 dangbaichinhs = dangbaichinh.objects.update_or_create(ten=ten, quan=quan, tp=tp, id_ntt=0)
+                 dangbaichinhs = dangbaichinh.objects.update_or_create(ten=ten, id_ntt=0)
                  return render(request, 'ctdb_chutro.html')
              else:
-                 dangbaichinhs =dangbaichinh.objects.update_or_create(ten=ten, quan=quan, tp=tp, id_ct=0)
+                 dangbaichinhs =dangbaichinh.objects.update_or_create(ten=ten, id_ct=0)
                  return render(request, 'ctdb_nguoitimtro.html')
     else:
         return render(request,'dangbai.html')
@@ -44,13 +49,26 @@ def dangbai_chutro(request): #index chinh(nút index chính)
             gia = request.POST['gia']
             diachi = request.POST['diachi']
             sdt = request.POST['sdt']
+            quan= request.POST['quan']
+            tp =request.POST['tp']
+            status =0
+            dangbaichutros = dangbaichutro.objects.update_or_create(ten=ten,tieude=tieude,noidung=noidung,img=img,gia=gia,diachi=diachi,sdt=sdt,quan=quan,tp=tp,status=status)
 
-            dangbaichutros = dangbaichutro.objects.update_or_create(ten=ten,tieude=tieude,noidung=noidung,img=img,gia=gia,diachi=diachi,sdt=sdt)
-
-            return HttpResponse('<a href="/">HOME</a>')
+            return redirect('/')
     else:
         return render(request,'dangbai_chutro.html')
 
+
+# @login_required(login_url='/accounts/login')
+# def dangbai_chutro(request):
+#     if request.method =='POST':
+#         form = forms.CreateChuTro(request.POST,request.FILES)
+#         if form.is_valid():
+#             return redirect(index)
+#     else:
+#         form = forms.CreateChuTro()
+#     return render(request,'dangbai_chutro.html',{'form': form})
+#
 
 @login_required(login_url='/accounts/login')
 def dangbai_nguoitimtro(request):# index phu (nút index phụ)
@@ -59,24 +77,26 @@ def dangbai_nguoitimtro(request):# index phu (nút index phụ)
         ten = request.user.username
         noidung = request.POST['noidung']
         sdt = request.POST['sdt']
-
-        dangbainguoitimtros = dangbainguoitimtro.objects.create(ten=ten,tieude=tieude,noidung=noidung,sdt=sdt)
+        quan = request.POST['quan']
+        tp = request.POST['tp']
+        status = request.POST['status']
+        dangbainguoitimtros = dangbainguoitimtro.objects.create(ten=ten,tieude=tieude,noidung=noidung,sdt=sdt,quan=quan,tp=tp,status=status)
         dangbainguoitimtros.save()
-        return HttpResponse('<a href="/">HOME</a>')
+        return redirect('/')
     else:
         return render(request,'dangbai_chutro.html')
 
 
 def chitietbaidang(request,id):
-   post = dangbaichinh.objects.get(id=id)
+   post = dangbaichutro.objects.get(id=id)
    return render(request,'chitietbaidang.html',{'post':post})
+def chitietbaidang_phu(request,id):
+   post = dangbainguoitimtro.objects.get(id=id)
+   return render(request,'chitietbaidang_phu.html',{'post':post})
 
 
-# class DestinationListView(ListView):
-#     model = Destination
-#     template_name = 'noidungtimkiem.html'
-#
-#     def get_context_data(seft, **kwargs):
-#         context = super().get_context_data(**kwargs)
-#         context['filter'] = OrderFilers(seft.request.GET, queryset=seft.get_queryset())
-#         return context
+def search(request):
+    query = request.GET['query']
+    allPosts = dangbaichutro.objects.filter(tieude__icontains=query)
+    show = {'allPosts': allPosts}
+    return render(request,'search.html',show)
