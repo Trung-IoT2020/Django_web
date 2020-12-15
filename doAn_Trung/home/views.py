@@ -9,13 +9,13 @@ from django.contrib.auth.decorators import login_required
 # Create your views here.
 
 def index(request):
-    dest_tong = dangbaichutro.objects.all()
+    dest_tong = dangbaichutro.objects.all().order_by("-ngaythang")
     soluongbai = Paginator(dest_tong,4)
     page_so = request.GET.get('page')
     page_obj = soluongbai.get_page(page_so)
     return render(request, 'index.html',{'dest_tong':page_obj})
 def index_ntt(request):
-    dest_phu = dangbainguoitimtro.objects.all()
+    dest_phu = dangbainguoitimtro.objects.all().order_by("-ngaythang")
     soluongbai = Paginator(dest_phu,4)
     page_so = request.GET.get('page')
     page_obj = soluongbai.get_page(page_so)
@@ -89,14 +89,14 @@ def dangbai_nguoitimtro(request):# index phu (nút index phụ)
 
 def chitietbaidang(request,id):
    post = dangbaichutro.objects.get(id=id)
-   return render(request,'chitietbaidang.html',{'post':post})
+   return render(request,'index_noidungchitiet.html',{'post':post})
 def chitietbaidang_phu(request,id):
    post = dangbainguoitimtro.objects.get(id=id)
-   return render(request,'chitietbaidang_phu.html',{'post':post})
+   return render(request,'index_noidungchitiet_phu.html',{'post':post})
 
 
 def search(request):
     query = request.GET['query']
-    allPosts = dangbaichutro.objects.filter(tieude__icontains=query)
+    allPosts = dangbaichutro.objects.filter(tieude__icontains=query).order_by("-ngaythang")
     show = {'allPosts': allPosts}
-    return render(request,'search.html',show)
+    return render(request,'index_timkiem.html',show)

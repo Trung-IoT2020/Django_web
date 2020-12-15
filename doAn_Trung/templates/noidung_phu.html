@@ -4,7 +4,39 @@
 <div id="colorlib-page">
 		<a href="#" class="js-colorlib-nav-toggle colorlib-nav-toggle"><i></i></a>
 		<aside id="colorlib-aside" role="complementary" class="js-fullheight">
-            {% include 'menu.html' %}
+            <div>
+<nav id="colorlib-main-menu" role="navigation">
+				<ul>
+					<li class="colorlib-active"><a href="/">Home</a></li>
+                    {% if user.is_authenticated %}
+                    <li>Hello ,{{ user.first_name }} </li>
+                    <li><a href="/accounts/logout">logout</a></li>
+                    {% else %}
+
+					<li><a href="/accounts/register">Register</a></li>
+                    <li><a href="/accounts/login">Login</a></li>
+
+
+                    {% endif %}
+                    <li><a href="/home/dangbai">POST</a></li>
+                    <li><a href="/">Chủ trọ</a>/<a href="/home/index_ntt">Tìm Trọ</a></li>
+				</ul>
+			</nav>
+</div>
+<div>
+    <div class="colorlib-footer">
+				<h1 id="colorlib-logo" class="mb-4"><a href="/" style="background-image: url({% static 'images/bg_1.jpg'%});">NHÀ TRỌ </a></h1>
+				<div class="mb-4">
+					<h3>Chi tiết liên hệ</h3>
+				</div>
+				<p class="pfooter">
+                    số điện thoại hostline: 0924016865 <br>
+                    Hoặc số điện thoại: 090239774<br>
+                    Để được hổ trợ và tư vấn dịch vụ<br>
+                </p>
+</div>
+</div>
+
 
 
 		</aside> <!-- END COLORLIB-ASIDE -->
@@ -35,10 +67,55 @@
                             {% endfor %}
 
 			    		</div><!-- END-->
-                        {% include 'nut_chuyentrang.html' %}
+                        <div class="row">
+			          <div class="col">
+			            <div class="block-27">
+
+                        <ul>
+                            <li><a href="?page={{ dest }}">&lt;<</a></li>
+			                <li><a href="?page={{ dest.previous_page_number }}">&lt;</a></li>
+			                <li class="active"><span>1</span></li>
+			                <li><a href="?page=2">2</a></li>
+			                <li><a href="?page=3">3</a></li>
+			                <li><a href="?page=4">4</a></li>
+			                <li><a href="?page={{ dest.previous_next_number }}"> ></a></li>
+			                <li><a href="?page={{ dest.paginator.num_pages }}">&gt;></a></li>
+
+			              </ul>
+
+			            </div>
+
+			          </div>
+
+                    </div>
+
 
 			    	</div>
-                        {% include "ben_Trai.html" %}
+                                        	    			<div class="col-xl-4 sidebar ftco-animate bg-light pt-5">
+	            <div class="sidebar-box pt-md-4">
+					<form action="/search" class="form-inline my-2 my-lg-0" method="get">
+						<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="query" id="query">
+						<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+	              </form>
+	            </div>
+	            <div class="sidebar-box ftco-animate">
+	            	<h3 class="sidebar-heading">Các quận đang còn trống</h3>
+	              <ul class="categories">
+	                <li><a href="#">Quận 8 <span>(6)</span></a></li>
+	                <li><a href="#">Quận 1 <span>(8)</span></a></li>
+	                <li><a href="#">Bình thạnh <span>(2)</span></a></li>
+	                <li><a href="#">Gò Vâp <span>(2)</span></a></li>
+	                <li><a href="#">Nhà Bè <span>(7)</span></a></li>
+	              </ul>
+	            </div>
+
+
+	            <div class="sidebar-box ftco-animate">
+	              <h3 class="sidebar-heading">Giải trí</h3>
+	              <p>Hãy đặt nhanh khi phòng đang còn :)) </p>
+	            </div>
+	          </div><!-- END COL -->
+
 	    		</div>
 
 	    	</div>
