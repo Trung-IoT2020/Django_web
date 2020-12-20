@@ -62,7 +62,7 @@
                  <div class="meta-wrap"><p class="meta">
                  <span><i class="icon-calendar mr-2"></i>{{ post.ngaythang|date:"M d, Y" }}</span><br>
                  <span><a href="#">Tên chủ trọ: {{ post.ten }}</a></span> <br>
-                     <span><a>Giá :  {{ post.gia|intcomma }}.VND</a></span> <br>
+                     <span><a>Giá :  {{ post.gia|intcomma }} VND</a></span> <br>
 					 <span><a >SĐT : {{ post.sdt }}</a></span> <br>
                      <span><a >Quận: {{ post.quan }}</a></span> <br>
 
@@ -71,18 +71,25 @@
 			  <p>
 				  <a href="/" class="btn btn-info" role="button">COMEBACK</a>
 			  </p>
-				</td>
-				<td>
-					<form action="datphong" method="post" >
+						<form action="datphong" method="post" enctype="multipart/form-data">
                                 {% csrf_token %}
-                 <div class="meta-wrap">
-					  <a>Họ Và Tên : <input type="text" name="hoten_dp" placeholder="Họ Và Tên"></a><br>
-					  <a>Số điện thoại :<input type="text" name="sdt_dp" placeholder="Số điện thoại" minlength="10" required></a><br>
-					  <a>email : <input type="email" name="email_dp" placeholder="EMAIL của bạn"></a><br>
-					  <a><input type="submit"></a>
-			     </div>
-					</form>
+                                <table  >
+                                    <h3>THÔNG TIN ĐĂNG BÀI CHỦ TRỌ</h3>
+                                    <thead>
+
+                                    <tr><td>Họ Tên Người Đặt : </td><td><input type="text" name="tennguoidat" placeholder="tennguoidat"></td></tr>
+
+                                        <tr><td>Số điện thoại : </td><td><input type="text" name="sdtnguoidat" placeholder="SĐT"minlength="10" required>(số đt để xác thực)</td></tr>
+
+                                        <tr><td>mail : </td><td><input type="email" name="mailnguoidat" placeholder="mailnguoidat">(phải có @)</td></tr>
+										<tr><td>Tiêu đề Bài viết đã chọn:  </td><td><input type="text" name="tieude_baidang" value="{{ post.tieude }}"  readonly></a></td></tr>
+									<tr><td></td><td><input type="submit" id="btn_dp"></td></tr>
+									 </thead>
+                                </table>
+                            </form>
+
 				</td>
+
 			 </table>
 	</div>
 

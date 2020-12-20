@@ -19,7 +19,7 @@
 	    				<div class="row pt-md-4">
                             <form action="dangbai_nguoitimtro" method="post" enctype="multipart/form-data">
                                 {% csrf_token %}
-                                <table class="table table-dark"border="2">
+                                <table >
                                     <h3>THÔNG TIN ĐĂNG BÀI NGƯỜI TÌM TRỌ</h3>
                                     <thead>
                                      <tr>
@@ -74,7 +74,7 @@
                                           <td><label for="1">Chọn để chấp nhận đăng bài </label></td>
                                      </tr>
                                       <tr>
-                                         <td><input type="submit"></td>
+                                         <td><input type="submit" id="btn_db"></td>
                                      </tr>
                                     </thead>
                                 </table>

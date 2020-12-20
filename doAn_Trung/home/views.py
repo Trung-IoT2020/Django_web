@@ -107,18 +107,17 @@ def search(request):
     show = {'allPosts': allPosts}
     return render(request,'index_timkiem.html',show)
 
-
-def datphong(request):
+def datphong(request,id):
     post = dangbaichutro.objects.get(id=id)
     if request.method == 'POST':
-        hoten_dp = request.POST['hoten_dp']
-        sdt_dp = request.POST['sdt_dp']
-        email_dp = request.POST['email_dp']
-        dattros = dattro.objects.create(hoten_dp=hoten_dp,sdt_dp=sdt_dp,email_dp=email_dp)
-        dattros.save()
-        return render(request, 'index.html', {'post': post})
+        hoten_dp = request.POST['tennguoidat']
+        mail_dp = request.POST['mailnguoidat']
+        sdt_dp = request.POST['sdtnguoidat']
+        ten = request.user.username
+        tieude_baidang = request.POST['tieude_baidang']
+        nguoidattros = dattro.objects.create(hoten_dp=hoten_dp,mail_dp=mail_dp,sdt_dp=sdt_dp,ten=ten,tieude_baidang = tieude_baidang)
+        nguoidattros.save()
+        return redirect('/')
     else:
-        return render(request, 'index_noidungchitiet.html',{'post':post})
-
-
+        return render(request,'index_noidungchitiet.html',{'post':post})
 

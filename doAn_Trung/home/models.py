@@ -67,5 +67,7 @@ class dattro(models.Model):
     hoten_dp= models.CharField(max_length=150)
     sdt_dp=models.IntegerField()
     mail_dp = models.CharField(max_length=150)
+    ten = models.CharField(max_length=150)
+    tieude_baidang = models.CharField(max_length=50)
     def __str__(self):
         return self.sdt_dp
