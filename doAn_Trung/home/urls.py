@@ -9,4 +9,7 @@ urlpatterns = [
     path('<int:id>/',views.chitietbaidang,name="chitietbaidang"),
     path('index_ntt/<int:id>/',views.chitietbaidang_phu,name="chitietbaidang_phu"),
     path('search',views.search,name="search"),
+    path('timtheoquan', views.timtheoquan, name="timtheoquan"),
+    path('<int:id>/datphong',views.datphong,name="datphong")
+
 ]

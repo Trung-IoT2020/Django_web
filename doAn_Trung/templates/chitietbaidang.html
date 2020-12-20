@@ -1,5 +1,7 @@
 {% load static %}
 {% static "images" as baseUrl %}
+{% load humanize %}
+
 
 <div id="colorlib-page">
 		<a href="#" class="js-colorlib-nav-toggle colorlib-nav-toggle"><i></i></a>
@@ -54,24 +56,36 @@
              <div><a ><img src="{{ post.img.url }}"width="400px" height="400px"></a></div>
 
 		</div>
-          <div class="text text-2 pl-md-4">
-				 <h3 class="nav-link"><a >{{ post.tieude }}</a></h3>
+		 <h3 class="nav-link"><a >{{ post.tieude }}</a></h3>
+		 	<table>
+				<td>
                  <div class="meta-wrap"><p class="meta">
-                 <span><i class="icon-calendar mr-2"></i>{{ post.ngaythang }}</span><br>
-                 <span><a href="#"><i class="icon-folder-o mr-2"></i>{{ post.ten }}</a></span> <br>
-
-                     <span><a><i class="icon-folder-o mr-2"></i>{{ post.gia }}</a></span> <br>
-                     <span><a ><i class="icon-folder-o mr-2"></i>{{ post.sdt }}</a></span> <br>
-                     <span><a ><i class="icon-folder-o mr-2"></i>{{ post.quan }}</a></span> <br>
-                     <span><a ><i class="icon-folder-o mr-2"></i>{{ post.tp }}</a></span> <br>
+                 <span><i class="icon-calendar mr-2"></i>{{ post.ngaythang|date:"M d, Y" }}</span><br>
+                 <span><a href="#">Tên chủ trọ: {{ post.ten }}</a></span> <br>
+                     <span><a>Giá :  {{ post.gia|intcomma }}.VND</a></span> <br>
+					 <span><a >SĐT : {{ post.sdt }}</a></span> <br>
+                     <span><a >Quận: {{ post.quan }}</a></span> <br>
 
 			     </div>
-				  <p class="mb-4">{{ post.noidung }}</p>
-				  <p><a href="/" class="btn-custom">COMEBACK <span class="ion-ios-arrow-forward"></span></a></p>
-			</div>
+				  <p class="mb-4">Nội dung : {{ post.noidung }}</p><br>
+			  <p>
+				  <a href="/" class="btn btn-info" role="button">COMEBACK</a>
+			  </p>
+				</td>
+				<td>
+					<form action="datphong" method="post" >
+                                {% csrf_token %}
+                 <div class="meta-wrap">
+					  <a>Họ Và Tên : <input type="text" name="hoten_dp" placeholder="Họ Và Tên"></a><br>
+					  <a>Số điện thoại :<input type="text" name="sdt_dp" placeholder="Số điện thoại" minlength="10" required></a><br>
+					  <a>email : <input type="email" name="email_dp" placeholder="EMAIL của bạn"></a><br>
+					  <a><input type="submit"></a>
+			     </div>
+					</form>
+				</td>
+			 </table>
 	</div>
 
-{% endblock %}
 </div>
                          <div class="row">
 			          <div class="col">
@@ -107,11 +121,30 @@
 					<div class="sidebar-box ftco-animate">
 						<h3 class="sidebar-heading">Các quận đang còn trống</h3>
 					  <ul class="categories">
-						<li><a href="#">Quận 8 <span>(6)</span></a></li>
-						<li><a href="#">Quận 1 <span>(8)</span></a></li>
-						<li><a href="#">Bình thạnh <span>(2)</span></a></li>
-						<li><a href="#">Gò Vâp <span>(2)</span></a></li>
-						<li><a href="#">Nhà Bè <span>(7)</span></a></li>
+						  <form action="/timtheoquan" class="form-inline my-2 my-lg-0" method="get">
+						  <select name="theoquan" id="theoquan">
+                                             <option  value=1>Quận 1</option>
+                                             <option  value=2>Quận 2</option>
+                                             <option  value=3>Quận 3</option>
+                                             <option  value=4>Quận 4</option>
+                                             <option  value=5>Quận 5</option>
+                                             <option  value=6>Quận 6</option>
+                                             <option  value=7>Quận 7</option>
+                                             <option  value=8>Quận 8</option>
+                                             <option  value=9>Quận 9</option>
+                                             <option value=10>Quận 10</option>
+                                             <option value=11>Quận 11</option>
+                                             <option value=12>Quận 12</option>
+                                             <option value=13>Quận Bình Tân</option>
+                                             <option value=14>Quận Tân Bình</option>
+                                             <option value=15>Quận Gò Vấp</option>
+                                             <option value=16>Quận Bình Thạnh</option>
+                                             <option value=17>Quận Nhà Bè</option>
+                                             <option value=18>Quận Bình Chánh</option>
+
+							  </select>
+						  <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Theo Quận</button>
+							   </form>
 					  </ul>
 					</div>
 					<div class="sidebar-box ftco-animate">
@@ -127,6 +160,11 @@
 		</div><!-- END COLORLIB-MAIN -->
 	</div><!-- END COLORLIB-PAGE -->
 
+<!--<script language="javascript">-->
+<!--            var button = document.getElementById("btn");-->
+<!--            button.onclick = function(){-->
+<!--                alert("Bạn đăng ký thành công! Chủ trọ sẽ gọi điện vào số điện thoại mà bạn đã đăng ký!");-->
+<!--            }-->
+<!--        </script>-->
 
-
-
+{% endblock %}

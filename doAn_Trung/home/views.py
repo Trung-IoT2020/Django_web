@@ -1,6 +1,6 @@
 from django.conf.urls import url
 from django.shortcuts import render, redirect
-from .models import dangbaichinh,dangbaichutro,dangbainguoitimtro
+from .models import dangbaichinh,dangbaichutro,dangbainguoitimtro,quan_tp,thanhpho,dattro
 from django.core.files.storage import FileSystemStorage
 from django.core.paginator import Paginator
 from django.http import HttpResponse
@@ -21,7 +21,11 @@ def index_ntt(request):
     page_obj = soluongbai.get_page(page_so)
     return render(request, 'index_ntt.html',{'dest_phu':page_obj})
 
-
+def timtheoquan(request):
+    theoquan = request.GET['theoquan']
+    allPosts = dangbaichutro.objects.filter(quan__startswith=theoquan)
+    show = {'allPosts_quan': allPosts}
+    return render(request, 'index_timtheoquan.html', show)
 @login_required(login_url='/accounts/login')
 def dangbai(request):
 
@@ -39,6 +43,7 @@ def dangbai(request):
 
 @login_required(login_url='/accounts/login')
 def dangbai_chutro(request): #index chinh(nút index chính)
+
     if request.method =='POST':
             tieude = request.POST['tieude']
             ten = request.user.username
@@ -47,6 +52,7 @@ def dangbai_chutro(request): #index chinh(nút index chính)
             fs = FileSystemStorage()
             img=fs.save(update_file.name,update_file)
             gia = request.POST['gia']
+
             diachi = request.POST['diachi']
             sdt = request.POST['sdt']
             quan= request.POST['quan']
@@ -100,3 +106,19 @@ def search(request):
     allPosts = dangbaichutro.objects.filter(tieude__icontains=query).order_by("-ngaythang")
     show = {'allPosts': allPosts}
     return render(request,'index_timkiem.html',show)
+
+
+def datphong(request):
+    post = dangbaichutro.objects.get(id=id)
+    if request.method == 'POST':
+        hoten_dp = request.POST['hoten_dp']
+        sdt_dp = request.POST['sdt_dp']
+        email_dp = request.POST['email_dp']
+        dattros = dattro.objects.create(hoten_dp=hoten_dp,sdt_dp=sdt_dp,email_dp=email_dp)
+        dattros.save()
+        return render(request, 'index.html', {'post': post})
+    else:
+        return render(request, 'index_noidungchitiet.html',{'post':post})
+
+
+

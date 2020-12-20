@@ -2,8 +2,22 @@ from django.utils.timezone import now
 import datetime
 from django.db import models
 from django.contrib.auth.models import User
-
 # Create your models here.
+
+class thanhpho(models.Model):
+    id_tp = models.IntegerField
+    ten_tp=models.CharField(max_length=50)
+    def __str__(self):
+        return self.ten_tp
+
+
+class quan_tp(models.Model):
+    id_quan = models.IntegerField
+    id_tp = models.ForeignKey(thanhpho,on_delete=models.CASCADE)
+    ten_quan=models.CharField(max_length=50)
+    def __str__(self):
+        return self.ten_quan
+
 class dangbaichutro(models.Model):
     id_ct = models.IntegerField
     ten = models.CharField(max_length=150)
@@ -42,13 +56,16 @@ class dangbainguoitimtro(models.Model):
 class dangbaichinh(models.Model):
     id= models.IntegerField
     ten= models.CharField(max_length=150)
-    quan = models.CharField(max_length=11)
-    tp = models.CharField(max_length=50)
     id_ct =dangbaichutro.id_ct(default=True)
     id_ntt =dangbainguoitimtro.id_ntt(default=True)
 
     def __str__(self):
         return self.ten
 
-
-
+class dattro(models.Model):
+    id= models.IntegerField
+    hoten_dp= models.CharField(max_length=150)
+    sdt_dp=models.IntegerField()
+    mail_dp = models.CharField(max_length=150)
+    def __str__(self):
+        return self.sdt_dp
