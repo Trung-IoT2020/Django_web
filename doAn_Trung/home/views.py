@@ -1,6 +1,6 @@
 from django.conf.urls import url
 from django.shortcuts import render, redirect
-from .models import dangbaichinh,dangbaichutro,dangbainguoitimtro,quan_tp,thanhpho,dattro
+from .models import dangbaichinh,dangbaichutro,dangbainguoitimtro,dattro
 from django.core.files.storage import FileSystemStorage
 from django.core.paginator import Paginator
 from django.http import HttpResponse

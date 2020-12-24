@@ -7,35 +7,35 @@
            <div>
 <nav id="colorlib-main-menu" role="navigation">
 				<ul>
-					<li class="colorlib-active"><a href="/">Home</a></li>
+					<li class="colorlib-active"><a href="/">Trang Chủ</a></li>
                     {% if user.is_authenticated %}
-                    <li>Hello ,{{ user.first_name }} </li>
-                    <li><a href="/accounts/logout">logout</a></li>
+                    <li>Xin chào ,{{ user.first_name }} </li>
+                    <li><a href="/accounts/logout">Đăng Xuất</a></li>
                     {% else %}
 
-					<li><a href="/accounts/register">Register</a></li>
-                    <li><a href="/accounts/login">Login</a></li>
+					<li><a href="/accounts/register">Đăng Ký</a></li>
+                    <li><a href="/accounts/login">Đăng Nhập</a></li>
 
 
                     {% endif %}
-                    <li><a href="/home/dangbai">POST</a></li>
+                    <li><a href="/home/dangbai">Đăng Bài</a></li>
                     <li><a href="/">Chủ trọ</a>/<a href="/home/index_ntt">Tìm Trọ</a></li>
 				</ul>
 			</nav>
-</div>
-<div>
-    <div class="colorlib-footer">
-				<h1 id="colorlib-logo" class="mb-4"><a href="/" style="background-image: url({% static 'images/bg_1.jpg'%});">NHÀ TRỌ </a></h1>
-				<div class="mb-4">
-					<h3>Chi tiết liên hệ</h3>
-				</div>
-				<p class="pfooter">
-                    số điện thoại hostline: 0924016865 <br>
-                    Hoặc số điện thoại: 090239774<br>
-                    Để được hổ trợ và tư vấn dịch vụ<br>
-                </p>
-</div>
-</div>
+		   </div>
+		<div>
+			<div class="colorlib-footer">
+						<h1 id="colorlib-logo" class="mb-4"><a href="/" style="background-image: url({% static 'images/bg_1.jpg'%});">NHÀ TRỌ </a></h1>
+						<div class="mb-4">
+							<h3>Chi tiết liên hệ</h3>
+						</div>
+						<p class="pfooter">
+							Số điện thoại hotline: 0924016865 <br>
+							Hoặc số điện thoại: 0909239774<br>
+							Để được hổ trợ và tư vấn dịch vụ<br>
+						</p>
+			</div>
+		</div>
 
 
 
@@ -74,21 +74,27 @@
 			    		</div><!-- END-->
                          <div class="row">
 			          <div class="col">
-			            <div class="block-27">
+			            <div  class="block-20" >
+    <div class="pages">
+      <ul>
+    {% if dest_tong.has_previous %}
+ <a class="prev btn btn-info" href="?page={{dest_tong.previous_page_number}}">Prev</a>
+    {% endif %}
+      {% for pg in dest_tong.paginator.page_range %}
+        {% if dest_tong.number == pg %}
+		  <a href="?page={{pg}}" class="active">{{pg}}</a>
+        {% else %}
+          <a href="?page={{pg}}" class="btn">{{pg}}</a>
+        {% endif %}
+      {% endfor %}
+		      {% if dest_tong.has_next %}
+      <a class="next btn btn-info" href="?page={{dest_tong.next_page_number}}">Next</a>
+    {% endif %}
+      </ul>
+    </div>
+    <span class="clear_both"></span>
 
-                        <ul>
-                            <li><a href="?page={{ dest }}">&lt;<</a></li>
-			                <li><a href="?page={{ dest.previous_page_number }}">&lt;</a></li>
-			                <li class="active"><span>1</span></li>
-			                <li><a href="?page=2">2</a></li>
-			                <li><a href="?page=3">3</a></li>
-			                <li><a href="?page=4">4</a></li>
-			                <li><a href="?page={{ dest.previous_next_number }}"> ></a></li>
-			                <li><a href="?page={{ dest.paginator.num_pages }}">&gt;></a></li>
-
-			              </ul>
-
-			            </div>
+  </div>
 
 			          </div>
 

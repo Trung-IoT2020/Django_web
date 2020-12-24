@@ -10,6 +10,7 @@ urlpatterns = [
     path('index_ntt/<int:id>/',views.chitietbaidang_phu,name="chitietbaidang_phu"),
     path('search',views.search,name="search"),
     path('timtheoquan', views.timtheoquan, name="timtheoquan"),
-    path('<int:id>/datphong',views.datphong,name="datphong")
+    path('<int:id>/datphong',views.datphong,name="datphong"),
+   # path('pagination', views.pagination, name="pagination"),
 
 ]

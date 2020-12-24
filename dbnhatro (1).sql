@@ -2,10 +2,10 @@
 -- version 4.9.2
 -- https://www.phpmyadmin.net/
 --
--- Máy chủ: 127.0.0.1:3306
--- Thời gian đã tạo: Th12 20, 2020 lúc 11:32 AM
--- Phiên bản máy phục vụ: 5.7.28
--- Phiên bản PHP: 7.3.12
+-- Host: 127.0.0.1:3306
+-- Generation Time: Dec 24, 2020 at 06:44 AM
+-- Server version: 5.7.28
+-- PHP Version: 7.3.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -19,13 +19,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Cơ sở dữ liệu: `dbnhatro`
+-- Database: `dbnhatro`
 --
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `auth_group`
+-- Table structure for table `auth_group`
 --
 
 DROP TABLE IF EXISTS `auth_group`;
@@ -39,7 +39,7 @@ CREATE TABLE IF NOT EXISTS `auth_group` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `auth_group_permissions`
+-- Table structure for table `auth_group_permissions`
 --
 
 DROP TABLE IF EXISTS `auth_group_permissions`;
@@ -56,7 +56,7 @@ CREATE TABLE IF NOT EXISTS `auth_group_permissions` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `auth_permission`
+-- Table structure for table `auth_permission`
 --
 
 DROP TABLE IF EXISTS `auth_permission`;
@@ -71,7 +71,7 @@ CREATE TABLE IF NOT EXISTS `auth_permission` (
 ) ENGINE=MyISAM AUTO_INCREMENT=49 DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `auth_permission`
+-- Dumping data for table `auth_permission`
 --
 
 INSERT INTO `auth_permission` (`id`, `name`, `content_type_id`, `codename`) VALUES
@@ -127,7 +127,7 @@ INSERT INTO `auth_permission` (`id`, `name`, `content_type_id`, `codename`) VALU
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `auth_user`
+-- Table structure for table `auth_user`
 --
 
 DROP TABLE IF EXISTS `auth_user`;
@@ -145,19 +145,21 @@ CREATE TABLE IF NOT EXISTS `auth_user` (
   `date_joined` datetime(6) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `username` (`username`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `auth_user`
+-- Dumping data for table `auth_user`
 --
 
 INSERT INTO `auth_user` (`id`, `password`, `last_login`, `is_superuser`, `username`, `first_name`, `last_name`, `email`, `is_staff`, `is_active`, `date_joined`) VALUES
-(1, 'pbkdf2_sha256$216000$XDP40Vh987mx$DwAbgMaypthQJva80P/P//nh6gNfCe1gj6ul1fXjsLk=', '2020-12-20 10:58:28.673501', 0, 'thienbao', 'bao', 'dao', 'bao@yahoo.com', 0, 1, '2020-12-20 10:58:28.398499');
+(1, 'pbkdf2_sha256$216000$yefSLfhkgLmb$m/ehHgs42ulrcs2+FNY3RzwZHPOM1mfN2kvddFVUhmE=', '2020-12-22 02:10:04.960530', 1, 'admin', '', '', 'trungbaod17th10@gmail.com', 1, 1, '2020-12-21 09:20:05.012468'),
+(2, 'pbkdf2_sha256$216000$xoYRZ6LCNYCY$xidQMrF76YgjLuIkhwXwO+stCC3/a5z9bK+cKs0L3IU=', '2020-12-21 09:49:47.358878', 0, 'thienbao1999', 'Thiên Bảo', 'Đào Hoàng ', 'dhthienbao1607@gmail.com', 0, 1, '2020-12-21 09:21:48.093008'),
+(3, 'pbkdf2_sha256$216000$XWnUUYHhYFoI$GDIPPx5b5sLMh412MmSBcitJ9S+UwbPYSwQorckVSN8=', '2020-12-21 15:57:55.630035', 0, 'vantrungd17', 'Trung', 'Nguyễn', 'vantrungD17@gmail.com', 0, 1, '2020-12-21 09:29:34.641242');
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `auth_user_groups`
+-- Table structure for table `auth_user_groups`
 --
 
 DROP TABLE IF EXISTS `auth_user_groups`;
@@ -174,7 +176,7 @@ CREATE TABLE IF NOT EXISTS `auth_user_groups` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `auth_user_user_permissions`
+-- Table structure for table `auth_user_user_permissions`
 --
 
 DROP TABLE IF EXISTS `auth_user_user_permissions`;
@@ -191,7 +193,7 @@ CREATE TABLE IF NOT EXISTS `auth_user_user_permissions` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `django_admin_log`
+-- Table structure for table `django_admin_log`
 --
 
 DROP TABLE IF EXISTS `django_admin_log`;
@@ -212,7 +214,7 @@ CREATE TABLE IF NOT EXISTS `django_admin_log` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `django_content_type`
+-- Table structure for table `django_content_type`
 --
 
 DROP TABLE IF EXISTS `django_content_type`;
@@ -225,7 +227,7 @@ CREATE TABLE IF NOT EXISTS `django_content_type` (
 ) ENGINE=MyISAM AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `django_content_type`
+-- Dumping data for table `django_content_type`
 --
 
 INSERT INTO `django_content_type` (`id`, `app_label`, `model`) VALUES
@@ -245,7 +247,7 @@ INSERT INTO `django_content_type` (`id`, `app_label`, `model`) VALUES
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `django_migrations`
+-- Table structure for table `django_migrations`
 --
 
 DROP TABLE IF EXISTS `django_migrations`;
@@ -258,34 +260,34 @@ CREATE TABLE IF NOT EXISTS `django_migrations` (
 ) ENGINE=MyISAM AUTO_INCREMENT=20 DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `django_migrations`
+-- Dumping data for table `django_migrations`
 --
 
 INSERT INTO `django_migrations` (`id`, `app`, `name`, `applied`) VALUES
-(1, 'contenttypes', '0001_initial', '2020-12-20 10:56:44.214320'),
-(2, 'auth', '0001_initial', '2020-12-20 10:56:44.313539'),
-(3, 'admin', '0001_initial', '2020-12-20 10:56:44.572317'),
-(4, 'admin', '0002_logentry_remove_auto_add', '2020-12-20 10:56:44.645622'),
-(5, 'admin', '0003_logentry_add_action_flag_choices', '2020-12-20 10:56:44.653550'),
-(6, 'contenttypes', '0002_remove_content_type_name', '2020-12-20 10:56:44.696751'),
-(7, 'auth', '0002_alter_permission_name_max_length', '2020-12-20 10:56:44.723500'),
-(8, 'auth', '0003_alter_user_email_max_length', '2020-12-20 10:56:44.745366'),
-(9, 'auth', '0004_alter_user_username_opts', '2020-12-20 10:56:44.753354'),
-(10, 'auth', '0005_alter_user_last_login_null', '2020-12-20 10:56:44.782099'),
-(11, 'auth', '0006_require_contenttypes_0002', '2020-12-20 10:56:44.783059'),
-(12, 'auth', '0007_alter_validators_add_error_messages', '2020-12-20 10:56:44.792060'),
-(13, 'auth', '0008_alter_user_username_max_length', '2020-12-20 10:56:44.814906'),
-(14, 'auth', '0009_alter_user_last_name_max_length', '2020-12-20 10:56:44.835917'),
-(15, 'auth', '0010_alter_group_name_max_length', '2020-12-20 10:56:44.858574'),
-(16, 'auth', '0011_update_proxy_permissions', '2020-12-20 10:56:44.866572'),
-(17, 'auth', '0012_alter_user_first_name_max_length', '2020-12-20 10:56:44.888399'),
-(18, 'home', '0001_initial', '2020-12-20 10:56:45.005899'),
-(19, 'sessions', '0001_initial', '2020-12-20 10:56:45.050484');
+(1, 'contenttypes', '0001_initial', '2020-12-21 09:19:08.883530'),
+(2, 'auth', '0001_initial', '2020-12-21 09:19:08.986062'),
+(3, 'admin', '0001_initial', '2020-12-21 09:19:09.244120'),
+(4, 'admin', '0002_logentry_remove_auto_add', '2020-12-21 09:19:09.317977'),
+(5, 'admin', '0003_logentry_add_action_flag_choices', '2020-12-21 09:19:09.325928'),
+(6, 'contenttypes', '0002_remove_content_type_name', '2020-12-21 09:19:09.369853'),
+(7, 'auth', '0002_alter_permission_name_max_length', '2020-12-21 09:19:09.396319'),
+(8, 'auth', '0003_alter_user_email_max_length', '2020-12-21 09:19:09.419085'),
+(9, 'auth', '0004_alter_user_username_opts', '2020-12-21 09:19:09.427085'),
+(10, 'auth', '0005_alter_user_last_login_null', '2020-12-21 09:19:09.451137'),
+(11, 'auth', '0006_require_contenttypes_0002', '2020-12-21 09:19:09.453129'),
+(12, 'auth', '0007_alter_validators_add_error_messages', '2020-12-21 09:19:09.461129'),
+(13, 'auth', '0008_alter_user_username_max_length', '2020-12-21 09:19:09.487966'),
+(14, 'auth', '0009_alter_user_last_name_max_length', '2020-12-21 09:19:09.509963'),
+(15, 'auth', '0010_alter_group_name_max_length', '2020-12-21 09:19:09.531964'),
+(16, 'auth', '0011_update_proxy_permissions', '2020-12-21 09:19:09.539963'),
+(17, 'auth', '0012_alter_user_first_name_max_length', '2020-12-21 09:19:09.564007'),
+(18, 'home', '0001_initial', '2020-12-21 09:19:09.687279'),
+(19, 'sessions', '0001_initial', '2020-12-21 09:19:09.733828');
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `django_session`
+-- Table structure for table `django_session`
 --
 
 DROP TABLE IF EXISTS `django_session`;
@@ -297,10 +299,17 @@ CREATE TABLE IF NOT EXISTS `django_session` (
   KEY `django_session_expire_date_a5c62663` (`expire_date`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data for table `django_session`
+--
+
+INSERT INTO `django_session` (`session_key`, `session_data`, `expire_date`) VALUES
+('75jddifih0rg27o3le7lfti85nf19qnr', '.eJxVjLEOAiEQRP-F2hAIB7KW9n4D2V1WOTWQHHeV8d-V5Aqdct6beamE21rS1mVJc1Yn5dThtyPkh9QB8h3rrWludV1m0kPRO-360rI8z7v7d1Cwl7FGewxsaAoGCDKLAAUXDZFMIoY9RG98uIJY6xDdN-RgypSZIwVQ7w_4Azhk:1krNZL:ZmeIJ4Xmc5NSkhEGHdA4z_oBygX_QrqwvLTs0bzUXkY', '2021-01-04 15:57:55.633035');
+
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `home_dangbaichinh`
+-- Table structure for table `home_dangbaichinh`
 --
 
 DROP TABLE IF EXISTS `home_dangbaichinh`;
@@ -310,19 +319,23 @@ CREATE TABLE IF NOT EXISTS `home_dangbaichinh` (
   `id_ct` int(11) NOT NULL,
   `id_ntt` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `home_dangbaichinh`
+-- Dumping data for table `home_dangbaichinh`
 --
 
 INSERT INTO `home_dangbaichinh` (`id`, `ten`, `id_ct`, `id_ntt`) VALUES
-(1, 'thienbao', 1, 0);
+(1, 'thienbao1999', 1, 0),
+(2, 'vantrungd17', 1, 0),
+(3, 'thienbao1999', 0, 1),
+(4, 'vantrungd17', 0, 1),
+(5, 'admin', 1, 0);
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `home_dangbaichutro`
+-- Table structure for table `home_dangbaichutro`
 --
 
 DROP TABLE IF EXISTS `home_dangbaichutro`;
@@ -340,19 +353,25 @@ CREATE TABLE IF NOT EXISTS `home_dangbaichutro` (
   `status` int(11) NOT NULL,
   `ngaythang` datetime(6) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `home_dangbaichutro`
+-- Dumping data for table `home_dangbaichutro`
 --
 
 INSERT INTO `home_dangbaichutro` (`id`, `ten`, `img`, `diachi`, `tieude`, `noidung`, `gia`, `sdt`, `quan`, `tp`, `status`, `ngaythang`) VALUES
-(1, 'thienbao', '126206634_2828288160779181_3805846540195290238_n_AJfIUlj.jpg', '180 cao lỗ', 'qua dep', ' 123', 9000000, 909010101, 5, 1, 0, '2020-12-20 10:59:17.500071');
+(1, 'vantrungd17', '1.jpg', '180 cao lỗ', 'nhà trọ mới quận 8', 'tiện nghi và đủ các thiết bị, giá rẻ trong khu vực, gần chợ gần trường đại học cấp 2, cấp 3,...', 1500000, 924016865, 8, 1, 0, '2020-12-21 09:36:46.508591'),
+(2, 'vantrungd17', '23.jpg', ' 252/29/5, Đường Cao Thắng', 'nhà trọ mới quận 10', 'nơi tiện nghi tại quận 10 thích hợp cho mọi việc đi chuyển', 1600000, 909087474, 10, 1, 0, '2020-12-21 09:41:02.994332'),
+(3, 'vantrungd17', '4.jpg', '180 cao lỗ', 'giá rẻ tại quận 8', 'gần chợ , gần trường', 2000000, 908787874, 8, 1, 0, '2020-12-21 09:42:34.471155'),
+(4, 'vantrungd17', 'q1.jpg', ' 353/20, Đường Phạm Ngũ Lão', 'nhà rẻ tại quận 1', 'rẻ nhất tại ở quận 1, gần chung tâm', 3000000, 907080904, 1, 1, 0, '2020-12-21 09:44:31.399338'),
+(5, 'vantrungd17', 'q2.jpg', ' Đường Nguyễn Xí', 'cho thuê nhà tại quận 2', 'giá thành rẻ, gần chung tâm thành phố', 2000000, 650807014, 2, 1, 0, '2020-12-21 09:47:10.137834'),
+(6, 'vantrungd17', '5.jpg', 'Dương Bá Trạc', 'phòng cho thuê q8', 'tại quận 8, yên tĩnh, sạch sẽ', 2500000, 908552244, 8, 1, 0, '2020-12-21 09:49:20.603857'),
+(7, 'admin', '4_1eNIv6c.jpg', '1980/10 Nguyễn Thị Thập', 'nhà trọ quận 7', 'giá rẻ, thuận tiện đi lại', 2500000, 657457187, 7, 1, 0, '2020-12-24 06:23:06.946389');
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `home_dangbainguoitimtro`
+-- Table structure for table `home_dangbainguoitimtro`
 --
 
 DROP TABLE IF EXISTS `home_dangbainguoitimtro`;
@@ -367,12 +386,19 @@ CREATE TABLE IF NOT EXISTS `home_dangbainguoitimtro` (
   `status` int(11) NOT NULL,
   `ngaythang` datetime(6) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `home_dangbainguoitimtro`
+--
+
+INSERT INTO `home_dangbainguoitimtro` (`id`, `ten`, `tieude`, `noidung`, `sdt`, `quan`, `tp`, `status`, `ngaythang`) VALUES
+(1, 'thienbao1999', 'cần tìm nhà trọ tại q8', 'gần chợ gần trường học', 567457187, 8, 1, 1, '2020-12-21 09:51:28.966843');
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `home_dattro`
+-- Table structure for table `home_dattro`
 --
 
 DROP TABLE IF EXISTS `home_dattro`;
@@ -384,21 +410,20 @@ CREATE TABLE IF NOT EXISTS `home_dattro` (
   `ten` varchar(150) NOT NULL,
   `tieude_baidang` varchar(50) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `home_dattro`
+-- Dumping data for table `home_dattro`
 --
 
 INSERT INTO `home_dattro` (`id`, `hoten_dp`, `sdt_dp`, `mail_dp`, `ten`, `tieude_baidang`) VALUES
-(1, 'Nguyễn Văn Trung', 924016865, 'vantrungD17@gmail.com', 'thienbao', 'qua dep'),
-(2, 'trung', 924016865, '09@gmail.com', 'thienbao', 'qua dep'),
-(3, '123', 924016865, 'vantrung2D17@gmail.com', '', 'qua dep');
+(1, 'Nguyễn Văn Trung', 924016865, 'vantrungD17@gmail.com', 'thienbao1999', 'phòng cho thuê q8'),
+(2, 'Nguyễn Văn Trung', 924016865, 'vantrungD17@gmail.com', 'vantrungd17', 'phòng cho thuê q8');
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `home_quan_tp`
+-- Table structure for table `home_quan_tp`
 --
 
 DROP TABLE IF EXISTS `home_quan_tp`;
@@ -413,7 +438,7 @@ CREATE TABLE IF NOT EXISTS `home_quan_tp` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `home_thanhpho`
+-- Table structure for table `home_thanhpho`
 --
 
 DROP TABLE IF EXISTS `home_thanhpho`;

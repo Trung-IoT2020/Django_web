@@ -69,23 +69,29 @@
                             {% endfor %}
 
 			    		</div><!-- END-->
-                         <div class="row">
+                                                  <div class="row">
 			          <div class="col">
-			            <div class="block-27">
+			            <div  class="block-20" >
+    <div class="pages">
+      <ul>
+    {% if dest_tong.has_previous %}
+ <a class="prev btn btn-info" href="?page={{dest_tong.previous_page_number}}">Prev</a>
+    {% endif %}
+      {% for pg in dest_tong.paginator.page_range %}
+        {% if dest_tong.number == pg %}
+		  <a href="?page={{pg}}" class="active">{{pg}}</a>
+        {% else %}
+          <a href="?page={{pg}}" class="btn">{{pg}}</a>
+        {% endif %}
+      {% endfor %}
+		      {% if dest_tong.has_next %}
+      <a class="next btn btn-info" href="?page={{dest_tong.next_page_number}}">Next</a>
+    {% endif %}
+      </ul>
+    </div>
+    <span class="clear_both"></span>
 
-                        <ul>
-                            <li><a href="?page={{ dest }}">&lt;<</a></li>
-			                <li><a href="?page={{ dest.previous_page_number }}">&lt;</a></li>
-			                <li class="active"><span>1</span></li>
-			                <li><a href="?page=2">2</a></li>
-			                <li><a href="?page=3">3</a></li>
-			                <li><a href="?page=4">4</a></li>
-			                <li><a href="?page={{ dest.previous_next_number }}"> ></a></li>
-			                <li><a href="?page={{ dest.paginator.num_pages }}">&gt;></a></li>
-
-			              </ul>
-
-			            </div>
+  </div>
 
 			          </div>
 
